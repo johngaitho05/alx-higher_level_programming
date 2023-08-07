@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Get the Python code from the environment variable
+PYCODE=$(echo "$PYCODE")
+
+# Create a temporary file to store the Python code
+TMP_FILE=$(mktemp)
+echo "$PYCODE" > "$TMP_FILE"
+
+# Run the temporary Python script
+python "$TMP_FILE"
+
+# Remove the temporary file
+rm "$TMP_FILE"
