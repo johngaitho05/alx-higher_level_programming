@@ -6,4 +6,5 @@ for i in range(10):
         elif (i * 10 + j) == 89:
             print('{num}'.format(num=89))
         else:
-            print("{prefix}{num}".format(num=(i * 10 + j), prefix='0' if (i * 10 + j) < 10 else ''), end=', ')
+            print("{prefix}{num}"
+                  .format(num=(i * 10 + j), prefix='0' if (i * 10 + j) < 10 else ''), end=', ')
