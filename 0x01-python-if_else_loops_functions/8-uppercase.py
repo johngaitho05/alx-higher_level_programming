@@ -5,6 +5,3 @@ def uppercase(str):
             print("{n}".format(n=c), end='')
         else:
             print("{n}".format(n=chr(ord(c) - 32)), end='')
-
-
-uppercase('Best School 98 Battery street')
