@@ -10,4 +10,3 @@ for i in range(10):
                   end=', ')
         else:
             print("{num}".format(num=(i * 10 + j)), end=', ')
-
