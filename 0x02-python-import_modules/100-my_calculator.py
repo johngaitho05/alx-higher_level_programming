@@ -1,16 +1,25 @@
 #!/usr/bin/python3
 if __name__ == '__main__':
-    from sys import argv, exit
+    import sys
     from calculator_1 import add, sub, mul, div
 
-    args = argv[1:]
-    mapper = {'+': add, '-': sub, '*': mul, '/': div}
+    args = sys.argv[1:]
+    operators = "+-*/"
     if len(args) != 3:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
-        exit(1)
-    elif args[1] not in mapper:
+        sys.exit(1)
+    elif args[1] not in operators:
         print("Unknown operator. Available operators: +, -, * and /")
-        exit(1)
-    total = mapper[args[1]](int(args[0]), int(args[2]))
-    print("{a} {operator} {b} = {c}".format(a=args[0], operator=args[1], b=args[2], c=total))
+        sys.exit(1)
+    a = int(args[0])
+    b = int(args[2])
+    if args[1] == '+':
+        result = add(a, b)
+    elif args[1] == '-':
+        result = sub(a, b)
+    elif args[1] == '*':
+        result = mul(a, b)
+    else:
+        result = div(a, b)
 
+    print("{} {} {} = {}".format(args[0], args[1], args[2], result))
