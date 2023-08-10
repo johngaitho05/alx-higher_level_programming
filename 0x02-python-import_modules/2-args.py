@@ -2,11 +2,12 @@
 if __name__ == "__main__":
     from sys import argv
 
-    args = argv[1:]
-    count = len(args)
-    s = 'argument' if count == 1 else 'arguments'
-    symbol = '.' if count == 0 else ':'
-    print(f"{count} {s}{symbol}".format(count=count, s=s, symbol=symbol))
-    for i, v in enumerate(args):
-        print("{i}: {v}".format(i=i + 1, v=v))
+    if len(argv[1:]) == 1:
+        print("{} argument:".format(len(argv[1:])))
+    elif len(argv[1:]) == 0:
+        print("{} arguments.".format(len(argv[1:])))
+    else:
+        print("{} arguments:".format(len(argv[1:])))
 
+    for i in argv[1:]:
+        print("{}: {}".format((argv[1:].index(i)) + 1, i))
