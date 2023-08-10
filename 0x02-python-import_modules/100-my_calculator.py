@@ -14,5 +14,3 @@ if __name__ == '__main__':
     total = mapper[args[1]](int(args[0]), int(args[2]))
     print("{a} {operator} {b} = {c}".format(a=args[0], operator=args[1], b=args[2], c=total))
 
-
-
