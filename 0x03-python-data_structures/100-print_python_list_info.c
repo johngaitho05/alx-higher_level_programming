@@ -23,6 +23,8 @@ void print_python_list_info(PyObject *pList)
 
 /**
  * PyInit_libPyList - python module
+ * This function is necessary to initialize
+ * the module when it's imported in Python.
  * Return: a python object
  */
 PyMODINIT_FUNC PyInit_libPyList(void)
@@ -30,8 +32,24 @@ PyMODINIT_FUNC PyInit_libPyList(void)
 	PyObject *module;
 
 	static PyMethodDef methods[] = {
-					{NULL, NULL, 0, NULL}
-			};
+			{NULL, NULL, 0, NULL} /* Sentinel */
+	};
+
+	static struct PyModuleDef moduledef = {
+			PyModuleDef_HEAD_INIT,
+			"libPyList",  /* Name of the module */
+			NULL,         /* Module documentation */
+			/*
+			 * Size of the per-interpreter state of the module,
+			 * * or -1 if the module keeps state in global variables.
+			 */
+			-1,
+			methods,      /* Method definitions */
+			NULL,         /* Slot definitions */
+			NULL,         /* Optional module-traverse function */
+			NULL,         /* Optional clear function */
+			NULL          /* Optional module destructor */
+	};
 
 	module = PyModule_Create(&moduledef);
 	if (module == NULL)
