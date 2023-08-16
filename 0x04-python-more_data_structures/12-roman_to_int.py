@@ -26,5 +26,3 @@ def roman_to_int(roman_string):
 
     return res
 
-
-print(roman_to_int("XV"))
