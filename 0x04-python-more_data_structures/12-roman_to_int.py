@@ -12,5 +12,7 @@ def roman_to_int(roman_string):
             i += 1
         res += current
         i += 1
+    if res > 3999:
+        return 0
 
     return res
