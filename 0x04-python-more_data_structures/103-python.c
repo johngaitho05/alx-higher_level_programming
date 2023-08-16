@@ -1,20 +1,20 @@
 #include <Python.h>
 
-#define _PyBytes_AS_STRING(op) (((PyBytesObject *)(op))->ob_sval)
+#define bytes_to_str(op) (((PyBytesObject *)(op))->ob_sval)
 
-static inline PyTypeObject *_Py_TYPE(PyObject *ob)
+static inline PyTypeObject *custom_py_type(PyObject *ob)
 {
 	return (ob->ob_type);
 }
 
 /**
- * _PyList_GetItem - Function to retrieve
+ * retrieve_item - Function to retrieve
  * an item from a Python list at a given index
  * @op: the list object
  * @i: index
  * Return: object at the given index
  */
-PyObject *_PyList_GetItem(PyObject *op, Py_ssize_t i)
+PyObject *retrieve_item(PyObject *op, Py_ssize_t i)
 {
 	if (!PyList_Check(op))
 	{
@@ -54,9 +54,9 @@ void print_python_list(PyObject *p)
 		printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
 		for (Py_ssize_t i = 0; i < size; i++)
 		{
-			PyObject *item = _PyList_GetItem(p, i);
+			PyObject *item = retrieve_item(p, i);
 
-			printf("Element %ld: %s\n", i, _Py_TYPE(item)->tp_name);
+			printf("Element %ld: %s\n", i, custom_py_type(item)->tp_name);
 		}
 	}
 	else
@@ -74,7 +74,7 @@ void print_python_bytes(PyObject *p)
 	if (PyBytes_Check(p))
 	{
 		Py_ssize_t size = PyBytes_Size(p);
-		char *bytes = _PyBytes_AS_STRING(p);
+		char *bytes = bytes_to_str(p);
 
 		printf("[.] bytes object info\n");
 		printf("  [.] size: %ld\n", size);
