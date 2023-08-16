@@ -4,7 +4,7 @@
 
 static inline PyTypeObject *custom_py_type(PyObject *ob)
 {
-	return (ob->ob_type);
+return (ob->ob_type);
 }
 
 /**
@@ -45,16 +45,15 @@ PyObject *retrieve_item(PyObject *op, Py_ssize_t i)
 void print_python_bytes(PyObject *p)
 {
 	printf("[.] bytes object info\n");
-
 	if (PyBytes_Check(p))
 	{
 		Py_ssize_t size = PyBytes_Size(p);
 		char *bytes = bytes_to_str(p);
 
-		printf("  [.] size: %ld\n", size);
-		printf("  [.] trying string: %s\n", bytes);
+		printf("  size: %ld\n", size);
+		printf("  trying string: %s\n", bytes);
 
-		printf("  [.] first %ld bytes: ", size + 1 > 10 ? 10 : size + 1);
+		printf("  first %ld bytes: ", size + 1 > 10 ? 10 : size + 1);
 		for (Py_ssize_t i = 0; i < size + 1 && i < 10; i++)
 		{
 			printf("%02hhx", bytes[i]);
@@ -93,7 +92,6 @@ void print_python_list(PyObject *p)
 	}
 	else
 	{
-		fprintf(stderr, "Invalid Python List Object\n");
+		fprintf(stderr, "[ERROR] Invalid Python List Object\n");
 	}
 }
-
