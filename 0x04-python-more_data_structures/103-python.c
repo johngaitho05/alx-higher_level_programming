@@ -1,4 +1,5 @@
 #include <Python.h>
+#include <stdio.h>
 
 /**
  * print_python_list - Prints information about a Python list object.
@@ -16,7 +17,7 @@ void print_python_list(PyObject *p)
 		printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
 		for (Py_ssize_t i = 0; i < size; i++)
 		{
-			PyObject *item = PyList_GetItem(p, i);
+			PyObject *item = PyList_GET_ITEM(p, i);
 
 			printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
 		}
@@ -36,7 +37,7 @@ void print_python_bytes(PyObject *p)
 	if (PyBytes_Check(p))
 	{
 		Py_ssize_t size = PyBytes_Size(p);
-		char *bytes = PyBytes_AsString(p);
+		char *bytes = PyBytes_AS_STRING(p);
 
 		printf("[.] bytes object info\n");
 		printf("  [.] size: %ld\n", size);
