@@ -1,10 +1,42 @@
 #include <Python.h>
 
-#define _Py_SIZE Py_SIZE
-#define _PyBytes_AS_STRING PyBytes_AS_STRING
-#define _Py_TYPE Py_TYPE
-#define _PyList_GetItem PyList_GetItem
+#define _PyBytes_AS_STRING(op) (((PyBytesObject *)(op))->ob_sval)
 
+static inline PyTypeObject *_Py_TYPE(PyObject *ob)
+{
+	return (ob->ob_type);
+}
+
+/**
+ * _PyList_GetItem - Function to retrieve
+ * an item from a Python list at a given index
+ * @op: the list object
+ * @i: index
+ * Return: object at the given index
+ */
+PyObject *_PyList_GetItem(PyObject *op, Py_ssize_t i)
+{
+	if (!PyList_Check(op))
+	{
+		PyErr_SetString(PyExc_TypeError, "Expected a list object");
+		return (NULL);
+	}
+
+	PyListObject *list = (PyListObject *)op;
+	Py_ssize_t size = list->ob_base.ob_size;
+
+	if (i < 0 || i >= size)
+	{
+		PyErr_SetString(PyExc_IndexError, "List index out of range");
+		return (NULL);
+	}
+
+	PyObject *item = list->ob_item[i];
+
+	Py_INCREF(item);
+
+	return (item);
+}
 
 /**
  * print_python_list - Prints information about a Python list object.
@@ -58,6 +90,6 @@ void print_python_bytes(PyObject *p)
 		printf("\n");
 	} else
 	{
-		fprintf(stderr, "Invalid Bytes Object\n");
+		fprintf(stderr, "  [ERROR] Invalid Bytes Object\n");
 	}
 }
