@@ -84,9 +84,25 @@ void print_python_float(PyObject *p)
 		return;
 	}
 
-	double value = custom_pyfloat_as_double(p);
+	double value = PyFloat_AS_DOUBLE(p);
 
-	printf("  value: %.15g\n", value);
+	char buffer[100];
+
+	snprintf(buffer, sizeof(buffer), "%.15f", value);
+
+	size_t length = strlen(buffer);
+
+	while (length > 2 && buffer[length - 1] == '0')
+	{
+		if (buffer[length - 2] == '.')
+			break;
+		buffer[--length] = '\0';
+	}
+
+	if (buffer[length - 1] == '.')
+		strcat(buffer, "0");
+
+	printf("  value: %s\n", buffer);
 }
 
 
