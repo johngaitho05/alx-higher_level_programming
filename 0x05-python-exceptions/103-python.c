@@ -131,6 +131,6 @@ void print_python_list(PyObject *p)
 	}
 	else
 	{
-		fprintf(stderr, "  [ERROR] Invalid Python List Object\n");
+		fprintf(stderr, "  [ERROR] Invalid List Object\n");
 	}
 }
