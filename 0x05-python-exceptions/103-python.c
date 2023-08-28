@@ -3,7 +3,6 @@
 
 #define bytes_to_str(op) (((PyBytesObject *)(op))->ob_sval)
 #define float_to_double(op) (((PyFloatObject *)(op))->ob_fval)
-#define custom_pybytes_get_size(op) (((PyVarObject *)(op))->ob_size)
 #define custom_pylist_size(op) (((PyVarObject *)(op))->ob_size)
 
 static inline PyTypeObject *custom_py_type(PyObject *ob)
