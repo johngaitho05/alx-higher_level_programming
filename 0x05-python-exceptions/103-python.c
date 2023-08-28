@@ -2,6 +2,8 @@
 #include <stdio.h>
 
 #define bytes_to_str(op) (((PyBytesObject *)(op))->ob_sval)
+#define float_as_double(op) (((PyFloatObject *)(op))->ob_fval)
+#define custom_get_size(op) (((PyVarObject *)(op))->ob_size)
 
 static inline PyTypeObject *custom_py_type(PyObject *ob)
 {
@@ -77,16 +79,16 @@ void print_python_bytes(PyObject *p)
 	}
 
 	printf("[.] bytes object info\n");
-	printf("  size: %zd\n", PyBytes_GET_SIZE(p));
-	printf("  trying string: %s\n", PyBytes_AsString(p));
-	printf("  first %zd bytes: ", PyBytes_GET_SIZE(p) + 1);
-	if (PyBytes_GET_SIZE(p) >= 10)
+	printf("  size: %zd\n", custom_get_size(p));
+	printf("  trying string: %s\n", bytes_to_str(p));
+	printf("  first %zd bytes: ", custom_get_size(p) + 1);
+	if (custom_get_size(p) >= 10)
 	{
 		for (int i = 0; i < 10; ++i)
 			printf("%02hhx ", *((char *) (bytes_to_str(p)) + i));
 	} else
 	{
-		for (Py_ssize_t i = 0; i <= PyBytes_GET_SIZE(p); ++i)
+		for (Py_ssize_t i = 0; i <= custom_get_size(p); ++i)
 			printf("%02hhx ", *((char *) (bytes_to_str(p)) + i));
 	}
 	printf("\n");
@@ -104,7 +106,7 @@ void print_python_float(PyObject *p)
 		return;
 	}
 
-	double value = PyFloat_AS_DOUBLE(p);
+	double value = float_as_double(p);
 
 	printf("[.] float object info\n");
 	printf("  value: %f\n", value);
