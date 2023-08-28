@@ -83,8 +83,7 @@ void print_python_float(PyObject *p)
 		fprintf(stderr, "  [ERROR] Invalid Float Object\n");
 		return;
 	}
-
-	double value = PyFloat_AS_DOUBLE(p);
+	double value = custom_pyfloat_as_double(p);
 
 	char buffer[100];
 
