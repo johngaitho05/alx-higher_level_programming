@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Class Square that defines a square"""
+"""Square object blueprint"""
 
 
 class Square:
-    """Class Square that defines a square with attribute size"""
+    """Square object blueprint with attribute size"""
 
     def __init__(self, size=0):
         """Initializer"""

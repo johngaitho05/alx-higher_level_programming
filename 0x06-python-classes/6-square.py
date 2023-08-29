@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Define a class Square"""
+"""Square class definition"""
 
 
 class Square:
-    """An object representing a square"""
+    """Square object blueprint"""
 
     def __init__(self, size=0, position=(0, 0)):
         """Initialize a square
