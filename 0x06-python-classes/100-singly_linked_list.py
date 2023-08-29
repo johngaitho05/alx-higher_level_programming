@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 
-"""Defines a node of singly linked list"""
+"""Singly linked list definition"""
 
 
 class Node:
-    """A node of a singly linked list"""
+    """Node object of a singly linked list"""
 
     def __init__(self, data, next_node=None):
-        """Create a new node
+        """Node initializer
 
         Args:
-            data (int): The data to be added to the node.
+            data (int): The data to be held by the node.
             next_node (Node): pointer to the next node.
         """
         self.data = data
@@ -18,7 +18,7 @@ class Node:
 
     @property
     def data(self):
-        """Get & Set the data"""
+        """Getter for data attribute"""
         return self.__data
 
     @data.setter
@@ -29,7 +29,7 @@ class Node:
 
     @property
     def next_node(self):
-        """Get and Set the next node"""
+        """Getter for next node"""
         return self.__next_node
 
     @next_node.setter
@@ -69,13 +69,13 @@ class SinglyLinkedList:
         else:
             temp = self.__head
 
-            while (temp.next_node is not None and temp.next_node.data < value):
+            while temp.next_node is not None and temp.next_node.data < value:
                 temp = temp.next_node
             new_node.next_node = temp.next_node
             temp.next_node = new_node
 
     def __str__(self):
-        """Defines the printing  of a singly linked list"""
+        """String representation of a singly linked list"""
         values = []
         temp = self.__head
         while temp is not None:
