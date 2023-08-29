@@ -6,7 +6,12 @@ class Square:
     """Class Square that defines a square with attribute size"""
 
     def __init__(self, size=0, position=(0, 0)):
-        """Initializer"""
+        """
+        Initializer
+        Parameters:
+            size (int): The size of the square.
+            position (tuple): The coordinates of the square
+        """
         if type(size) != int:
             raise TypeError("size must be an integer")
         elif size < 0:
@@ -16,7 +21,7 @@ class Square:
 
     def area(self):
         """Public instance method that returns te current square area"""
-        return self.__size * self.__size
+        return self.size * self.size
 
     @property
     def size(self):
@@ -30,7 +35,11 @@ class Square:
 
     @position.setter
     def position(self, value):
-        """Property setter to change the value of position"""
+        """
+        Property setter to change the value of position
+        Parameters:
+            value (tuple): The coordinates of the square.
+        """
         if (type(value) != tuple) or (value[0] < 0) or \
                 (value[1] < 0) or (type(value[0]) != int) or \
                 (type(value[1]) != int):
@@ -40,7 +49,11 @@ class Square:
 
     @size.setter
     def size(self, value):
-        """Property setter to change the value of size"""
+        """
+        Property setter to change the value of size
+        Parameters:
+            value (int): The size of the square.
+        """
         if type(value) != int:
             raise TypeError("size must be an integer")
         elif value < 0:
