@@ -3,10 +3,10 @@
 
 
 class Square:
-    """Square class definition"""
+    """A Square class definition"""
 
     def __init__(self, size=0, position=(0, 0)):
-        """Initialize a square
+        """Initializer
 
         Args:
             size (int): size of the square
@@ -32,7 +32,7 @@ class Square:
 
     @property
     def position(self):
-        """Getter for position attribute"""
+        """Get and Set position of the square."""
         return self.__position
 
     @position.setter
@@ -64,3 +64,21 @@ class Square:
             for k in range(self.__size):
                 print("#", end="")
             print()
+
+    def __str__(self):
+        """Defines the printing of a square"""
+
+        if self.__size != 0:
+            for i in range(self.__position[1]):
+                print()
+
+        for i in range(self.__size):
+            for j in range(self.__position[0]):
+                print(" ", end="")
+
+            for k in range(self.__size):
+                print("#", end="")
+
+            if i != self.__size - 1:
+                print()
+        return ""
