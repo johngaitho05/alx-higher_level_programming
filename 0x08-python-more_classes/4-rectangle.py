@@ -54,7 +54,7 @@ class Rectangle:
         return self.width * 2 + self.height * 2
 
     def __str__(self):
-        """Computes the string representation of rectangle using #"""
+        """Returns a string representation of self"""
         if self.width == 0 or self.height == 0:
             return ""
         res = ""
@@ -65,4 +65,5 @@ class Rectangle:
         return res
 
     def __repr__(self):
+        """Returns an official representation of self"""
         return f'Rectangle({self.width}, {self.height})'
