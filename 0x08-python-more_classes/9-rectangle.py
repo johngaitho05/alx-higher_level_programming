@@ -86,6 +86,8 @@ class Rectangle:
             raise TypeError("rect_2 must be an instance of Rectangle")
         return max(rect_1, rect_2)
 
+    @classmethod
     def square(cls, size=0):
         """Creates a square (a rectangle with equal width and height)"""
-        return Rectangle(size, size)
+        sq = Rectangle(size, size)
+        return sq
