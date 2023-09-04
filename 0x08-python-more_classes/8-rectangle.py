@@ -74,6 +74,7 @@ class Rectangle:
         print("Bye rectangle...")
 
     def __gt__(self, other):
+        """Checks whether self is greater than other"""
         return self.area() > other.area()
 
     @staticmethod
