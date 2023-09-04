@@ -14,7 +14,6 @@ class NQueensGeek:
     def is_safe(self, board, row, col):
         """
         Check if it's safe to place a queen at board[row][col]
-        Check the column
         """
         for i in range(row):
             if board[i] == col or \
