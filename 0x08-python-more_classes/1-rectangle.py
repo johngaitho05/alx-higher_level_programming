@@ -7,6 +7,7 @@ class Rectangle:
     """Rectangle blueprint"""
 
     def __init__(self, width=0, height=0):
+        """ Initializer """
         if type(width) != int:
             raise TypeError("width must be an integer")
         if width < 0:
