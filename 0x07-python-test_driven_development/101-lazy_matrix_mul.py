@@ -3,7 +3,7 @@
 import numpy as np
 
 """
-Multiplies 2 matrices
+Multiplies 2 matrices using Numpy
 """
 
 
@@ -15,4 +15,4 @@ def lazy_matrix_mul(m_a, m_b):
     :return: The resulting of m_a * m_b
     """
 
-    return np.dot(m_a, m_b)
+    return np.matmul(m_a, m_b)
