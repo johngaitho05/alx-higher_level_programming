@@ -7,8 +7,7 @@ max_integer = __import__('6-max_integer').max_integer
 
 class TestMaxInteger(unittest.TestCase):
     """
-    Class named TestMaxInteger is defined as a subclass of
-    unittest.TestCase
+    Defines test cases for max_integer function
     """
     def test_list_has_items(self):
         """
