@@ -1,0 +1,122 @@
+===========================
+How to use 100-matrix_mul.py
+============================
+
+`matrix_mul()` multiplies two matrices
+
+::
+
+	>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+m_a not a list
+
+::
+    >>> matrix_mul("invalid matrix", [[3, 4]])
+    Traceback (most recent call last):
+    TypeError: m_a must be a list
+
+m_b not a list
+
+::
+    >>> matrix_mul([[5]], {})
+    Traceback (most recent call last):
+    TypeError: m_b must be a list
+
+m_a not a list of lists
+
+::
+    >>> matrix_mul([1, 2, 3], [[3, 4]])
+    Traceback (most recent call last):
+    TypeError: m_a must be a list of lists
+
+m_b not a list of lists
+
+::
+    >>> matrix_mul([[]], [2, 5, [4, 5]])
+    Traceback (most recent call last):
+    TypeError: m_b must be a list of lists
+
+m_a is empty
+
+::
+    >>> matrix_mul([[]], [[2, 3]])
+    Traceback (most recent call last):
+    ValueError: m_a can't be empty
+
+m_b is empty
+
+::
+    >>> matrix_mul([[4, 1]], [[]])
+    Traceback (most recent call last):
+    ValueError: m_b can't be empty
+
+m_a contains invalid values
+
+::
+    >>> matrix_mul([[1, 3, 'H']], [[2, 3]])
+    Traceback (most recent call last):
+    TypeError: m_a should contain only integers or floats
+
+m_b contains invalid values
+
+::
+    >>> matrix_mul([[1, 3]], [[2, 3, []]])
+    Traceback (most recent call last):
+    TypeError: m_b should contain only integers or floats
+
+m_a is not a rectangle
+
+::
+    >>> matrix_mul([[1, 3], [4]], [[2, 3]])
+    Traceback (most recent call last):
+    TypeError: each row of m_a must be of the same size
+
+m_b is not a rectangle
+
+::
+    >>> matrix_mul([[1, 3]], [[2, 3, 4], [2, 4]])
+    Traceback (most recent call last):
+    TypeError: each row of m_b must be of the same size
+
+
+Incompatible matrices
+
+::
+
+    >>> matrix_mul([[5]], [[2, 5, 6], [3, 5, 9]])
+    Traceback (most recent call last):
+    ValueError: m_a and m_b can't be multiplied
+
+
+Rectanglular Matrices
+
+::
+
+    >>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+    [[7, 10], [15, 22]]
+
+
+1x matrix
+
+::
+
+    >>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+    [[13, 16]]
+
+
+Zero matrix
+
+::
+
+    >>> matrix_mul([[2, 6, 9], [3, 4, 2]], [[0], [0], [0]])
+    [[0], [0]]
+
+1 by 1 matrices
+
+::
+
+    >>> matrix_mul([[2]], [[5]])
+    [[10]]
+
+
+
