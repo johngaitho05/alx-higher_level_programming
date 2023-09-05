@@ -7,10 +7,10 @@ How to use 5-text_indentation.py
 ::
 
 	>>> text_indentation = __import__('5-text_indentation').text_indentation
-	>>> text_indentation("Hello world. My name is Lynne Munini")
+	>>> text_indentation("Hello world. My name is John Gaitho")
 	Hello world.
 	<BLANKLINE>
-	My name is Lynne Munini
+	My name is John Gaitho
 
 text must be a string, otherwise raise a TypeError exception with the message text must be a string
 

@@ -7,18 +7,18 @@ How to use 3-say_my_name.py
 ::
 
 	>>> say_my_name = __import__('3-say_my_name').say_my_name
-	>>> say_my_name("Lynne", "Munini")
-	My name is Lynne Munini
+	>>> say_my_name("John", "Gaitho")
+	My name is John Gaitho
 
 first_name and last_name must be strings otherwise, raise a TypeError.
 
 ::
 
-	>>> say_my_name(1, "Munini")
+	>>> say_my_name(1, "Gaitho")
 	Traceback (most recent call last):
 	TypeError: first_name must be a string
 
-	>>> say_my_name("Lynne", 1)
+	>>> say_my_name("John", 1)
 	Traceback (most recent call last):
 	TypeError: last_name must be a string
 
