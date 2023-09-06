@@ -1,4 +1,4 @@
-#!/usr/bin /python3
+#!/usr/bin/python3
 
 """Prints 2 new lines after certain special characters"""
 
