@@ -7,18 +7,16 @@ def text_indentation(text):
     """
     Print 2 new lines after any of '.?:'
     :param text: the string to print
-    :return: None
     """
     if type(text) != str:
         raise TypeError("text must be a string")
-    text = text.strip()
-    special = ".?:"
-    last_printed = "#"
-    for c in text:
-        if c == " " and last_printed in special:
-            continue
-        print(c, end="")
-        last_printed = c
-        if c in special:
-            print('\n')
-
+    special = ":?."
+    for c in special:
+        text = text.replace(c, f'{c}<########>')
+    text = text.split("<########>")
+    for i, s in enumerate(text):
+        s = s.strip()
+        if i == len(text)-1:
+            print(s, end="")
+        else:
+            print(s, end="\n\n")
