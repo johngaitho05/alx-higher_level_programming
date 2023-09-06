@@ -16,6 +16,8 @@ def text_indentation(text):
     text = text.split("<########>")
     for i, s in enumerate(text):
         s = s.strip()
+        if not s:
+            continue
         if i == len(text)-1:
             print(s, end="")
         else:
