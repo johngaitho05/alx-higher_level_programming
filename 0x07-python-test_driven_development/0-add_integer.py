@@ -2,21 +2,20 @@
 
 """
 Program for adding 2 numbers
-a and b must be integers or floats, otherwise raise a TypeError
-a and b must be first cast to integers if they are float
 """
 
 
 def add_integer(a, b=98):
+
     """
-    Add two integers. If either is float, cast it to integer
-    :param a: an integer or float
-    :param b: an integer or float
-    :return: a + b
+    Function that adds 2 integers. a and b must be integers or floats,
+    otherwise TypeError exception is raised with the message
+    a must be an integer or b must be an integer. a and b are also
+    cast into integer if they are float.
     """
-    if type(a) not in (int, float):
+
+    if not (isinstance(a, int) or isinstance(a, float)):
         raise TypeError("a must be an integer")
-    if type(b) not in (int, float):
+    if not (isinstance(b, int) or isinstance(b, float)):
         raise TypeError("b must be an integer")
     return int(a) + int(b)
-
