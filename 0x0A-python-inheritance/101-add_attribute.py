@@ -10,6 +10,6 @@ def add_attribute(obj, name, value):
     if obj is None:
         raise TypeError("can't add new attribute")
     for _type in immutable_types:
-        if issubclass(obj.__class__, _type):
+        if isinstance(obj, _type):
             raise TypeError("can't add new attribute")
     setattr(obj, name, value)
