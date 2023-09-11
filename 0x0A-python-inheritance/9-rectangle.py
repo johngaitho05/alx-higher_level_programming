@@ -22,5 +22,3 @@ class Rectangle(BaseGeometry):
     def area(self):
         """We have procrastinated enough, let's do this!"""
         return self._width * self._height
-
-
