@@ -15,4 +15,3 @@ class MyInt(int):
     def __ne__(self, other):
         return not super().__ne__(other)
 
-
