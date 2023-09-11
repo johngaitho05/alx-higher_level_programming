@@ -4,8 +4,7 @@
 
 class BaseGeometry:
     """I love geometry"""
-    pass
 
     def area(self):
         """Too lazy to do this"""
-        raise NotImplementedError("area() is not implemented")
+        raise Exception("area() is not implemented")
