@@ -7,7 +7,7 @@ def add_attribute(obj, name, value):
     immutable_types = [int, str, float, tuple,
                        frozenset, bytes, bytearray, bool]
 
-    if obj is None or hasattr(obj, name):
+    if obj is None:
         raise TypeError("can't add new attribute")
     for _type in immutable_types:
         if issubclass(obj.__class__, _type):
