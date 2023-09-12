@@ -43,7 +43,8 @@ def print_stats():
     """Print stats"""
     print(f"File size: {total_file_size}")
     for code in STATUS_CODES:
-        print(f"{code}: {status_code_counts.get(code, 0)}")
+        if code in status_code_counts:
+            print("{:d}: {}".format(code, status_code_counts[code]))
 
 
 try:
