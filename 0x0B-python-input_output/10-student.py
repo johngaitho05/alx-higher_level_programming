@@ -27,6 +27,6 @@ class Student:
 
     def to_json(self, attrs=None):
         """Returns the specified student attributes"""
-        if not attrs or not all(type(att) == str for att in attrs):
+        if not attrs or type(attrs) != list:
             return self.__dict__
         return {k: v for k, v in self.__dict__.items() if k in attrs}
