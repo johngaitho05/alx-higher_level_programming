@@ -19,6 +19,7 @@ import sys
 import signal
 
 # Define a dictionary to store the status code counts
+STATUS_CODES = [200, 301, 400, 401, 403, 404, 405, 500]
 status_code_counts = {}
 
 # Initialize variables to store total file size and line count
@@ -41,15 +42,15 @@ signal.signal(signal.SIGINT, signal_handler)
 def print_stats():
     """Print stats"""
     print(f"File size: {total_file_size}")
-    for code in sorted(status_code_counts.keys()):
-        print(f"{code}: {status_code_counts[code]}")
+    for code in STATUS_CODES:
+        print(f"{code}: {status_code_counts.get(code, 0)}")
 
 
 try:
     for line in sys.stdin:
         # Parse the input line
         parts = line.split()
-        status_code = parts[7]
+        status_code = int(parts[7])
         file_size = int(parts[8])
         # Update total file size
         total_file_size += file_size
