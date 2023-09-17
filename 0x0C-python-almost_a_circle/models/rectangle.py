@@ -114,7 +114,7 @@ class Rectangle(Base):
         Update properties based on args and kwargs
         :param args: (id, width, height, x and y) respectively
         :param kwargs: an optional dictionary containing the keys (id,
-         width, height, x and y) whose value is used to update the
+         width, height, x and y) whose values are used to update the
          attributes of self
         """
         for i in range(min(len(args), 5)):
