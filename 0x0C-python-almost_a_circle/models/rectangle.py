@@ -97,7 +97,9 @@ class Rectangle(Base):
     def display(self):
         """Prints the rectangle using #"""
         res = ""
+        res += "\n" * self.y
         for i in range(self.height):
+            res += " " * self.x
             res += '#' * self.width
             if i < self.height - 1:
                 res += '\n'
