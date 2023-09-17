@@ -132,3 +132,8 @@ class Rectangle(Base):
         if not args and kwargs:
             for k, v in kwargs.items():
                 setattr(self, k, v)
+
+    def to_dictionary(self):
+        """Returns the dictionary representation of self"""
+        keys = ['id', 'width', 'height', 'x', 'y']
+        return {k: getattr(self, k) for k in keys}
