@@ -109,8 +109,14 @@ class Rectangle(Base):
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
             self.id, self.x, self.y, self.width, self.height)
 
-    def update(self, *args):
-        """Update properties based on args"""
+    def update(self, *args, **kwargs):
+        """
+        Update properties based on args and kwargs
+        :param args: (id, width, height, x and y) respectively
+        :param kwargs: an optional dictionary containing the keys (id,
+         width, height, x and y) whose value is used to update the
+         attributes of self
+        """
         for i in range(min(len(args), 5)):
             arg = args[i]
             if i == 0:
@@ -123,3 +129,6 @@ class Rectangle(Base):
                 self.x = arg
             else:
                 self.y = arg
+        if not args and kwargs:
+            for k, v in kwargs.items():
+                setattr(self, k, v)
