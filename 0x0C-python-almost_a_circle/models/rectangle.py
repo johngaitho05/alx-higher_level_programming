@@ -9,6 +9,7 @@ from .base import Base
 
 class Rectangle(Base):
     """Rectangle class derived from base class"""
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initialization"""
         super().__init__(id)
@@ -101,3 +102,7 @@ class Rectangle(Base):
             if i < self.height - 1:
                 res += '\n'
         print(res)
+
+    def __str__(self):
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
+            self.id, self.x, self.y, self.width, self.height)
