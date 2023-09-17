@@ -35,7 +35,7 @@ class Base:
         """
         dicts = [obj.to_dictionary() for obj in list_objs]
         data = cls.to_json_string(dicts)
-        with open(f"{list_objs[0].__class__.__name__}.json",
+        with open(f"{cls.__name__}.json",
                   mode='w+', encoding='utf-8') as f:
             f.write(data)
 
@@ -62,5 +62,18 @@ class Base:
         obj.update(**dictionary)
         return obj
 
+    @classmethod
+    def load_from_file(cls):
+        """
+        Loads a json file and creates square or
+        rectangle instances from the loaded data
+        :return: The created rectangles or squares
+        """
+        file_name = f"{cls.__name__}.json"
 
-
+        try:
+            with open(file_name, mode="r", encoding="utf-8") as f:
+                list_dicts = json.loads(f.read())
+                return [cls.create(**d) for d in list_dicts]
+        except FileNotFoundError:
+            return []
