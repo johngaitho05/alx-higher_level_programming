@@ -108,3 +108,18 @@ class Rectangle(Base):
     def __str__(self):
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
             self.id, self.x, self.y, self.width, self.height)
+
+    def update(self, *args):
+        """Update properties based on args"""
+        for i in range(min(len(args), 5)):
+            arg = args[i]
+            if i == 0:
+                self.id = arg
+            elif i == 1:
+                self.width = arg
+            elif i == 2:
+                self.height = arg
+            elif i == 3:
+                self.x = arg
+            else:
+                self.y = arg
