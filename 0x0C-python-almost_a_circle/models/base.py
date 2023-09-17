@@ -33,6 +33,8 @@ class Base:
         Saves objects json representation to a file
         :param list_objs: The objects to save
         """
+        if not list_objs:
+            list_objs = []
         dicts = [obj.to_dictionary() for obj in list_objs]
         data = cls.to_json_string(dicts)
         with open(f"{cls.__name__}.json",
@@ -46,7 +48,7 @@ class Base:
         :param json_string: a json string
         :return: a python object derived from the json string
         """
-        return json.loads(json_string) if json_string else ""
+        return json.loads(json_string) if json_string else []
 
     @classmethod
     def create(cls, **dictionary):
@@ -73,7 +75,10 @@ class Base:
 
         try:
             with open(file_name, mode="r", encoding="utf-8") as f:
-                list_dicts = json.loads(f.read())
+                data = f.read()
+                if not data:
+                    return []
+                list_dicts = json.loads(data)
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return []

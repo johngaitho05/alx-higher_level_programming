@@ -13,22 +13,22 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initialization"""
         super().__init__(id)
-        if type(width) != int:
+        if not isinstance(width, int) or isinstance(width, bool):
             raise TypeError("width must be an integer")
         if width <= 0:
-            raise TypeError("width must be > 0")
-        if type(height) != int:
+            raise ValueError("width must be > 0")
+        if not isinstance(height, int) or isinstance(height, bool):
             raise TypeError("height must be an integer")
         if height <= 0:
-            raise TypeError("width must be > 0")
-        if type(x) != int:
+            raise ValueError("height must be > 0")
+        if not isinstance(x, int) or isinstance(x, bool):
             raise TypeError("x must be an integer")
         if x < 0:
-            raise TypeError("x must be >= 0")
-        if type(y) != int:
+            raise ValueError("x must be >= 0")
+        if not isinstance(y, int) or isinstance(y, bool):
             raise TypeError("y must be an integer")
         if y < 0:
-            raise TypeError("y must be >= 0")
+            raise ValueError("y must be >= 0")
         self.__width = width
         self.__height = height
         self.__x = x
@@ -57,37 +57,37 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """Updates the width value of self"""
-        if type(value) != int:
+        if not isinstance(value, int) or isinstance(value, bool):
             raise TypeError("width must be an integer")
         if value <= 0:
-            raise TypeError("width must be > 0")
+            raise ValueError("width must be > 0")
         self.__width = value
 
     @height.setter
     def height(self, value):
         """Updates the height value of self"""
-        if type(value) != int:
+        if not isinstance(value, int) or isinstance(value, bool):
             raise TypeError("height must be an integer")
         if value <= 0:
-            raise TypeError("width must be > 0")
+            raise ValueError("height must be > 0")
         self.__height = value
 
     @x.setter
     def x(self, value):
         """Updates the x value of self"""
-        if type(value) != int:
+        if not isinstance(value, int) or isinstance(value, bool):
             raise TypeError("x must be an integer")
         if value < 0:
-            raise TypeError("x must be >= 0")
+            raise ValueError("x must be >= 0")
         self.__x = value
 
     @y.setter
     def y(self, value):
         """Updates the y value of self"""
-        if type(value) != int:
+        if not isinstance(value, int) or isinstance(value, bool):
             raise TypeError("y must be an integer")
         if value < 0:
-            raise TypeError("y must be >= 0")
+            raise ValueError("y must be >= 0")
         self.__y = value
 
     def area(self):
@@ -106,7 +106,7 @@ class Rectangle(Base):
         print(res)
 
     def __str__(self):
-        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
             self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):

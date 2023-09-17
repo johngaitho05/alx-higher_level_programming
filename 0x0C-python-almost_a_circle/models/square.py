@@ -14,7 +14,7 @@ class Square(Rectangle):
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
-        return """[Square] ({:d}) {:d}/{:d} - {:d}""".format(
+        return """[Square] ({}) {}/{} - {}""".format(
             self.id, self.x, self.y, self.width)
 
     @property
@@ -52,5 +52,5 @@ class Square(Rectangle):
 
     def to_dictionary(self):
         """Returns the dictionary representation of self"""
-        keys = ['id', 'size', 'x', 'y']
+        keys = ['id', 'x', 'size', 'y']
         return {k: getattr(self, k) for k in keys}
