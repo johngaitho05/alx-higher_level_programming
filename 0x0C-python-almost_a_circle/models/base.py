@@ -39,4 +39,28 @@ class Base:
                   mode='w+', encoding='utf-8') as f:
             f.write(data)
 
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        Retrieves data from a json string
+        :param json_string: a json string
+        :return: a python object derived from the json string
+        """
+        return json.loads(json_string) if json_string else ""
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        Creates an instance of rectangle or square from a dictionary
+        :param dictionary: the kwargs for updating the instance attributes
+        :return: the newly created instance
+        """
+        if 'size' in dictionary:
+            obj = cls(size=10)
+        else:
+            obj = cls(height=5, width=10)
+        obj.update(**dictionary)
+        return obj
+
+
 
