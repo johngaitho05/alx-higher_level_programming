@@ -143,10 +143,15 @@ class Base:
         """
         Draws all rectangles and squares
         :param list_rectangles: rectangles to draw
-        :param list_squares: squares to drwa
+        :param list_squares: squares to draw
         """
         t = turtle.Turtle()
+        t.screen.bgcolor("#7CFC00")
+        t.pensize(3)
+        t.shape("turtle")
+        t.color("#FF5733")
         for r in list_rectangles:
+            t.showturtle()
             t.up()
             t.goto(r.x, r.y)
             t.down()
@@ -157,7 +162,10 @@ class Base:
             t.forward(r.width)
             t.right(90)
             t.forward(r.height)
+            t.hideturtle()
+        t.color("#000000")
         for s in list_squares:
+            t.showturtle()
             t.up()
             t.goto(s.x, s.y)
             t.down()
@@ -168,3 +176,5 @@ class Base:
             t.forward(s.size)
             t.right(90)
             t.forward(s.size)
+            t.hideturtle()
+        turtle.exitonclick()
