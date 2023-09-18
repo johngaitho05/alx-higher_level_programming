@@ -127,7 +127,8 @@ class Base:
                     return []
                 keys = data[0]
                 vals_list = data[1:]
-                list_dicts = [dict(zip(keys, map(int, vals))) for vals in vals_list]
+                list_dicts = [dict(zip(keys, map(int, vals))) for
+                              vals in vals_list]
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return []
