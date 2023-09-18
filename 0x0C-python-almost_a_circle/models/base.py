@@ -22,6 +22,7 @@ class Base:
 
     @classmethod
     def id(cls):
+        """Used in tests to retrieve the last id value"""
         return cls.__nb_objects
 
     @staticmethod
