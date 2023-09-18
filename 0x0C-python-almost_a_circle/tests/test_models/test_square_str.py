@@ -18,12 +18,13 @@ class Test_str_square(unittest.TestCase):
 
     def test_str1(self):
         """test less informations"""
-        s2 = Square(2, 1)
-        self.assertEqual("[Square] (1) 1/0 - 2", str(s2))
+        _id = Base.id()
+        s2 = Square(2, 1, 0, 1)
+        self.assertEqual(f"[Square] (1) 1/0 - 2", str(s2))
         s3 = Square(3, 1, 6)
-        self.assertEqual("[Square] (2) 1/6 - 3", str(s3))
+        self.assertEqual(f"[Square] ({_id + 1}) 1/6 - 3", str(s3))
         s4 = Square(3)
-        self.assertEqual("[Square] (3) 0/0 - 3", str(s4))
+        self.assertEqual(f"[Square] ({_id + 2}) 0/0 - 3", str(s4))
         with self.assertRaises(TypeError):
             Square()
 

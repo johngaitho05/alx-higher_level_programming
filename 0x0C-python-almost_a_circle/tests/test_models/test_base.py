@@ -18,6 +18,7 @@ class TestBase(unittest.TestCase):
         """
             test if value of id has the good assignment
         """
+        _id = Base.id()
         b1 = Base()
         b2 = Base()
         b3 = Base()
@@ -27,14 +28,14 @@ class TestBase(unittest.TestCase):
         b7 = Base()
         b8 = Base(None)
 
-        self.assertEqual(b1.id, 1)
-        self.assertEqual(b2.id, 2)
-        self.assertEqual(b3.id, 3)
+        self.assertEqual(b1.id, _id + 1)
+        self.assertEqual(b2.id, _id + 2)
+        self.assertEqual(b3.id, _id + 3)
         self.assertEqual(b4.id, 12)
         self.assertEqual(b5.id, -5)
         self.assertEqual(b6.id, 6.3)
-        self.assertEqual(b7.id, 4)
-        self.assertEqual(b8.id, 5)
+        self.assertEqual(b7.id, _id + 4)
+        self.assertEqual(b8.id, _id + 5)
 
     def test_to_json_string(self):
         json_string = Base.to_json_string(None)

@@ -21,7 +21,7 @@ class TestBase(unittest.TestCase):
         """
             Test that we conform to PEP-8 for Base
         """
-        style = pycodestyle.StyleGuide(quiet=True)
+        style = pycodestyle.StyleGuide(quiet=False)
         result = style.check_files(['models/base.py'])
         self.assertEqual(result.total_errors, 0)
 

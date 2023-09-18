@@ -4,6 +4,7 @@
 """
 
 import unittest
+from models.base import Base
 from models import square
 Square = square.Square
 
@@ -16,18 +17,19 @@ class TestSquare(unittest.TestCase):
         """
             tests for dictionary for a normal square
         """
+        _id = Base.id()
         s1 = Square(10, 2, 1)
         self.assertEqual(s1.to_dictionary(), {
-                         'id': 1, 'x': 2, 'size': 10, 'y': 1})
+                         'id': _id + 1, 'x': 2, 'size': 10, 'y': 1})
         s1 = Square(10, 2, 1, 8)
         self.assertEqual(s1.to_dictionary(), {
                          'id': 8, 'x': 2, 'size': 10, 'y': 1})
         s5 = Square(3, 12)
         self.assertEqual(s5.to_dictionary(), {
-                         'id': 2, 'x': 12, 'size': 3, 'y': 0})
+                         'id': _id + 2, 'x': 12, 'size': 3, 'y': 0})
         s6 = Square(3)
         self.assertEqual(s6.to_dictionary(), {
-                         'id': 3, 'size': 3, 'x': 0, 'y': 0})
+                         'id': _id + 3, 'size': 3, 'x': 0, 'y': 0})
 
     def test_to_dict_square_value_error(self):
         """
