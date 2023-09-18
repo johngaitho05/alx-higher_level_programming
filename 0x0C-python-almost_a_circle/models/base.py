@@ -4,6 +4,7 @@
 An abstract base class
 """
 import json
+import csv
 
 
 class Base:
@@ -30,7 +31,7 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """
-        Saves objects json representation to a file
+        Saves objects to a json file
         :param list_objs: The objects to save
         """
         if not list_objs:
@@ -77,6 +78,51 @@ class Base:
             with open(file_name, mode="r", encoding="utf-8") as f:
                 data = f.read()
                 list_dicts = cls.from_json_string(data)
+                return [cls.create(**d) for d in list_dicts]
+        except FileNotFoundError:
+            return []
+
+    def get_csv_values(self):
+        if self.__class__.__name__ == "Rectangle":
+            return [self.id, self.width, self.height, self.x, self.y]
+        else:
+            return [self.id, self.size, self.x, self.y]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Saves objects to a csv file
+        :param list_objs: The objects to save
+        """
+        file_name = f"{cls.__name__}.csv"
+        if 'Rectangle' in file_name:
+            header = ["id", "width", "height", "x", "y"]
+        else:
+            header = ["id", "size", "x", "y"]
+        with open(file_name, mode="w+", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(header)
+            data = [obj.get_csv_values() for obj in list_objs]
+            if data:
+                writer.writerows(data)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Loads a csv file and creates square or
+        rectangle instances from the loaded data
+        :return: The created rectangles or squares
+        """
+        file_name = f"{cls.__name__}.csv"
+
+        try:
+            with open(file_name, mode="r", encoding="utf-8") as f:
+                data = list(csv.reader(f))
+                if not data:
+                    return []
+                keys = data[0]
+                vals_list = data[1:]
+                list_dicts = [dict(zip(keys, map(int, vals))) for vals in vals_list]
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return []
