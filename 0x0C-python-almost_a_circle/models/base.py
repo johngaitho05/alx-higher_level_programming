@@ -83,6 +83,10 @@ class Base:
             return []
 
     def get_csv_values(self):
+        """
+        Computes the csv representation of a Rectangle or Square
+        :return: The column values to save to csv
+        """
         if self.__class__.__name__ == "Rectangle":
             return [self.id, self.width, self.height, self.x, self.y]
         else:
@@ -99,6 +103,7 @@ class Base:
             header = ["id", "width", "height", "x", "y"]
         else:
             header = ["id", "size", "x", "y"]
+
         with open(file_name, mode="w+", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow(header)
