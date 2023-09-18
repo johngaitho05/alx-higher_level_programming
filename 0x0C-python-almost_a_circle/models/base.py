@@ -76,9 +76,7 @@ class Base:
         try:
             with open(file_name, mode="r", encoding="utf-8") as f:
                 data = f.read()
-                if not data:
-                    return []
-                list_dicts = json.loads(data)
+                list_dicts = cls.from_json_string(data)
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return []
