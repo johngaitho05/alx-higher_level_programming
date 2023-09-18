@@ -5,6 +5,7 @@ An abstract base class
 """
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -132,3 +133,34 @@ class Base:
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Draws all rectangles and squares
+        :param list_rectangles: rectangles to draw
+        :param list_squares: squares to drwa
+        """
+        t = turtle.Turtle()
+        for r in list_rectangles:
+            t.up()
+            t.goto(r.x, r.y)
+            t.down()
+            t.forward(r.width)
+            t.right(90)
+            t.forward(r.height)
+            t.right(90)
+            t.forward(r.width)
+            t.right(90)
+            t.forward(r.height)
+        for s in list_squares:
+            t.up()
+            t.goto(s.x, s.y)
+            t.down()
+            t.forward(s.size)
+            t.right(90)
+            t.forward(s.size)
+            t.right(90)
+            t.forward(s.size)
+            t.right(90)
+            t.forward(s.size)
