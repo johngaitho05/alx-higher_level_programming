@@ -2,11 +2,12 @@
 -- switch database
 use hbtn_0d_tvshows
 -- query data
-SELECT tg.name AS name
-FROM tv_show_genres AS tsg
-INNER JOIN tv_genres AS tg
-ON tg.id=tsg.genre_id
-INNER JOIN tv_shows AS ts
+SELECT name
+FROM tv_genres
+WHERE id NOT IN (
+SELECT DISTINCT tsg.genre_id
+FROM tv_show_genres tsg
+INNER JOIN tv_shows ts
 ON ts.id=tsg.show_id
-WHERE ts.title != 'Dexter'
-GROUP BY tg.name ORDER BY tg.name;
+WHERE ts.title = 'Dexter')
+ORDER BY name;
