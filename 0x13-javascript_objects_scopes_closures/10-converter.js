@@ -2,11 +2,12 @@
 exports.converter = function (base) {
   return function convert (number) {
     if (number === 0) {
-      return '';
+      return '0';
     } else {
       const remainder = number % base;
       const quotient = Math.floor(number / base);
-      return convert(quotient) + remainder;
+      const convertedDigit = remainder < 10 ? remainder : String.fromCharCode(87 + remainder);
+      return convert(quotient) + convertedDigit;
     }
   };
 };
