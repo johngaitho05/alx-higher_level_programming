@@ -4,10 +4,6 @@ class Rectangle {
     if (w > 0 && h > 0 && Number.isInteger(w) && Number.isInteger(h)) {
       this.width = w;
       this.height = h;
-    } else {
-      // If w or h is not a positive integer, create an empty object
-      this.width = 0;
-      this.height = 0;
     }
   }
 }
