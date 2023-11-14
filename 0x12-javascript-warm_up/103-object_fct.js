@@ -8,7 +8,7 @@ const myObject = {
 console.log(myObject);
 
 // Add the incr function to the myObject
-myObject.incr = function incr () {
+myObject.incr = function () {
   this.value++;
 };
 
