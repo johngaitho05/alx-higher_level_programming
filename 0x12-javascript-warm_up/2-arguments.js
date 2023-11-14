@@ -2,7 +2,6 @@
 
 const numArguments = process.argv.length - 2;
 
-
 if (numArguments === 0) {
   console.log('No argument');
 } else if (numArguments === 1) {
