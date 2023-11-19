@@ -1,4 +1,4 @@
-#!/usr/bin/bin/python3
+#!/usr/bin/python3
 """
 This module  lists all states from the database hbtn_0e_0_usa
 whose name matches the passed argument
