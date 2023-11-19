@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/bin/python3
 """
 This module  lists all states from the database hbtn_0e_0_usa
 whose name matches the passed argument
@@ -18,7 +18,7 @@ if __name__ == '__main__':
                          password=password, db=database, charset='utf8')
     cr = db.cursor()
     query = """SELECT id, name FROM states
-    WHERE name = {} ORDER BY id ASC""".format(sname)
+    WHERE name='{}' ORDER BY id ASC""".format(sname)
     cr.execute(query)
     for rec in cr.fetchall():
         print(rec)
