@@ -17,10 +17,10 @@ if __name__ == '__main__':
     db = MySQLdb.connect(host=host, port=port, user=user,
                          password=password, db=database, charset='utf8')
     cr = db.cursor()
-    query = """SELECT id, name FROM states
-    WHERE name=%s ORDER BY id ASC"""
-    cr.execute(query, (sname, ))
+    query = """SELECT id, name FROM states ORDER BY id ASC"""
+    cr.execute(query)
     for rec in cr.fetchall():
-        print(rec)
+        if rec[1] == sname:
+            print(rec)
     cr.close()
     db.close()
