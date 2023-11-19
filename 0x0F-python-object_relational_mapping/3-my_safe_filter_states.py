@@ -23,7 +23,7 @@ if __name__ == '__main__':
         cr = db.cursor()
 
         # Use parameterized query to prevent SQL injection
-        query = """SELECT id, name FROM states WHERE BINARY 
+        query = """SELECT id, name FROM states WHERE BINARY
         name=%s ORDER BY id ASC"""
         cr.execute(query, (sname,))
         # Fetch and print results
