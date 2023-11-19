@@ -13,7 +13,7 @@ if __name__ == '__main__':
     db = MySQLdb.connect(host=host, port=port, user=user,
                          password=password, db=database, charset='utf8')
     cr = db.cursor()
-    cr.execute("""SELECT id, name FROM cities ORDER BY id ASC""")
+    cr.execute("""SELECT ct.id, ct.name, st.name FROM cities ct LEFT JOIN states st ON st.id = ct.state_id ORDER BY id ASC""")
     for rec in cr.fetchall():
         print(rec)
     cr.close()
