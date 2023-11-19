@@ -18,7 +18,7 @@ if __name__ == '__main__':
                          password=password, db=database, charset='utf8')
     cr = db.cursor()
     query = """SELECT id, name FROM states
-    WHERE BINARY name = {} ORDER BY id ASC""".format(sname)
+    WHERE name = {} ORDER BY id ASC""".format(sname)
     cr.execute(query)
     for rec in cr.fetchall():
         print(rec)
