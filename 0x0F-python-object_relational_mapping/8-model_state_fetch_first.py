@@ -29,6 +29,7 @@ if __name__ == '__main__':
     # Print the result
     if first_state:
         print("{}: {}".format(first_state.id, first_state.name))
-
+    else:
+        print("Nothing")
     # Close the session
     session.close()
