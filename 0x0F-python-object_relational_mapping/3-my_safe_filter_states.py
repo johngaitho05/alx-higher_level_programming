@@ -8,18 +8,14 @@ import sys
 import MySQLdb
 
 if __name__ == '__main__':
-    host = 'localhost'
-    port = 3306
-    user = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    sname = sys.argv[4]
-    db = MySQLdb.connect(host=host, port=port, user=user,
-                         password=password, db=database, charset='utf8')
-    cr = db.cursor()
-    query = """SELECT id, name FROM states
-    WHERE name=%s ORDER BY id ASC"""
-    cr.execute(query, (sname, ))
+
+    db = MySQLdb.connect(host="localhost", port=3306,
+                         user=sys.argv[1], passwd=sys.argv[2],
+                         db=sys.argv[3], charset="utf8")
+    cr = db.crsor()
+    cr.execute("SELECT * FROM states WHERE name=%s\
+            ORDER BY states.id", (sys.argv[4], ))
+
     for rec in cr.fetchall():
         print(rec)
     cr.close()
