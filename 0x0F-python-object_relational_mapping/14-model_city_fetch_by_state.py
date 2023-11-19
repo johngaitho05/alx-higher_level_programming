@@ -14,7 +14,8 @@ if __name__ == '__main__':
 
     # Create a connection to the database
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
-                           format(username, password, database), pool_pre_ping=True)
+                           format(username, password, database),
+                           pool_pre_ping=True)
 
     # Create the tables
     Base.metadata.create_all(engine)
