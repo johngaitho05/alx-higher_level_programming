@@ -17,10 +17,10 @@ if __name__ == '__main__':
     db = MySQLdb.connect(host=host, port=port, user=user,
                          password=password, db=database, charset='utf8')
     cr = db.cursor()
-    query = """SELECT id, name FROM states ORDER BY id ASC"""
-    cr.execute(query)
+    query = """SELECT id, name FROM states
+    WHERE BINARY name=%s ORDER BY id ASC"""
+    cr.execute(query, (sname, ))
     for rec in cr.fetchall():
-        if rec[1] == sname:
-            print(rec)
+        print(rec)
     cr.close()
     db.close()
