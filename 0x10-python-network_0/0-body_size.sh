@@ -1,4 +1,5 @@
 #!/bin/bash
+#This script sends a request to that URL, and displays the size of the body of the response
 
 # Check if a URL is provided
 if [ -z "$1" ]; then
