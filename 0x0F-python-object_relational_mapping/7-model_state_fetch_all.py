@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     # Query to get all State objects and order them by id
     states = session.query(State).order_by(State.id).all()
-
+    print("states", states)
     # Print the results
     for state in states:
         print("{}: {}".format(state.id, state.name))
