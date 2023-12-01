@@ -16,12 +16,12 @@ try:
     # Send a request to the URL
     response = requests.get(url)
 
-    # Display the body of the response
-    print(response.text)
-
     # Check if the HTTP status code is greater than or equal to 400
     if response.status_code >= 400:
         print(f"Error code: {response.status_code}")
+    else:
+        # Display the body of the response
+        print(response.text)
 
 except requests.RequestException as e:
     print(f"Error accessing the URL: {e}")
