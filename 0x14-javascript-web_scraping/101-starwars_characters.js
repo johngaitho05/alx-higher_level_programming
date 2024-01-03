@@ -29,7 +29,7 @@ request.get(apiUrl, (error, response, body) => {
       request.get(characterUrl, (error, response, body) => {
         if (!error && response.statusCode === 200) {
           const characterData = JSON.parse(body);
-          characterData.id = characterUrl.split('/')[5]
+          characterData.id = characterUrl.split('/')[5];
           characters.push(characterData);
 
           // Check if all characters have been fetched
