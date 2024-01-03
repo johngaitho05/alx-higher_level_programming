@@ -2,6 +2,7 @@
 
 """An empty rectangle class"""
 
+print("__name__ is", __name__)
 
 class Rectangle:
     """Rectangle blueprint"""
