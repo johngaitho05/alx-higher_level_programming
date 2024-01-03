@@ -9,6 +9,7 @@ if (process.argv.length !== 3) {
 }
 
 const apiUrl = process.argv[2];
+const characterId = 18;
 
 // Make a GET request to the Star Wars API
 request.get(apiUrl, (error, response, body) => {
@@ -18,7 +19,7 @@ request.get(apiUrl, (error, response, body) => {
     console.error('Failed to retrieve movie information. Status code:', response.statusCode);
   } else {
     const movieData = JSON.parse(body);
-    const wedgeAntillesMovies = movieData.results.filter(movie => movie.characters.includes('https://swapi-api.alx-tools.com/api/people/18/'));
+    const wedgeAntillesMovies = movieData.results.filter(movie => movie.characters.some(character => character.endsWith(`/${characterId}/`)));
 
     console.log(wedgeAntillesMovies.length);
   }
