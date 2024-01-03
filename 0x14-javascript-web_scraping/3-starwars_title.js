@@ -14,7 +14,7 @@ const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
 // Make a GET request to the Star Wars API
 request.get(apiUrl, (error, response, body) => {
   if (error) {
-    console.error('Error:', error);
+    console.error(error);
   } else if (response.statusCode !== 200) {
     console.error('Failed to retrieve movie information. Status code:', response.statusCode);
   } else {
