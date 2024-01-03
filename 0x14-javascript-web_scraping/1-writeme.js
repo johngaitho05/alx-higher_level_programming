@@ -4,7 +4,7 @@ const fs = require('fs');
 
 // Check if the correct number of arguments is provided
 if (process.argv.length !== 4) {
-  console.error('Usage: ./writeFile.js <file_path> <string_to_write>');
+  console.error('Usage: ./1-writeme.js <file_path> <string_to_write>');
   process.exit(1);
 }
 
