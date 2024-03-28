@@ -21,13 +21,13 @@ if __name__ == '__main__':
 
     filesize, count = 0, 0
     codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
-    stats = {k: 0 for k in codes}
+    stats = {code: 0 for code in codes}
 
     def print_statistics():
         print("File size: {:d}".format(filesize))
-        for k, v in sorted(stats.items()):
-            if v:
-                print("{}: {}".format(k, v))
+        for code, occurrences in sorted(stats.items()):
+            if occurrences:
+                print("{}: {}".format(code, occurrences))
 
     try:
         for line in sys.stdin:
