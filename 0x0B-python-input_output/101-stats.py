@@ -16,59 +16,37 @@ status codes should be printed in ascending order
 """
 
 import sys
-import signal
 
-# Define a dictionary to store the status code counts
-STATUS_CODES = [200, 301, 400, 401, 403, 404, 405, 500]
-status_code_counts = {}
+if __name__ == '__main__':
 
-# Initialize variables to store total file size and line count
-total_file_size = 0
-line_count = 0
+    filesize, count = 0, 0
+    codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
+    stats = {k: 0 for k in codes}
 
+    def print_statistics():
+        print("File size: {:d}".format(filesize))
+        for k, v in sorted(stats.items()):
+            if v:
+                print("{}: {}".format(k, v))
 
-# Define a function to handle keyboard interruptions
-def signal_handler(sig, frame):
-    """handle keyboard interruption"""
-    print_stats()
-    sys.exit(0)
+    try:
+        for line in sys.stdin:
+            count += 1
+            data = line.split()
+            try:
+                sc = data[-2]
+                if sc in stats:
+                    stats[sc] += 1
+            except (IndexError, KeyError):
+                pass
+            try:
+                filesize += int(data[-1])
+            except (TypeError, IndexError, ValueError):
+                pass
+            if count % 10 == 0:
+                print_statistics()
+        print_statistics()
+    except KeyboardInterrupt:
+        print_statistics()
+        raise
 
-
-# Register the signal handler for CTRL + C
-signal.signal(signal.SIGINT, signal_handler)
-
-
-# Function to print statistics
-def print_stats():
-    """Print stats"""
-    print(f"File size: {total_file_size}")
-    for code in STATUS_CODES:
-        if code in status_code_counts:
-            print("{:d}: {}".format(code, status_code_counts[code]))
-
-
-try:
-    for line in sys.stdin:
-        # Parse the input line
-        parts = line.split()
-        status_code = int(parts[7])
-        file_size = int(parts[8])
-        # Update total file size
-        total_file_size += file_size
-
-        # Update status code counts
-        if status_code in status_code_counts:
-            status_code_counts[status_code] += 1
-        else:
-            status_code_counts[status_code] = 1
-
-        # Increment line count
-        line_count += 1
-
-        # Print statistics every 10 lines
-        if line_count % 10 == 0:
-            print_stats()
-except KeyboardInterrupt:
-    # Handle keyboard interruption (CTRL + C)
-    print_stats()
-    sys.exit(0)
